@@ -5,6 +5,7 @@ import IPoll from "../interfaces/Poll";
 const Poll = () => {
   const [poll, setPoll] = useState<IPoll>({
     meetingId: "",
+    title: "",
     questions: [
       {
         text: "",
@@ -67,12 +68,22 @@ const Poll = () => {
     setPoll(newPoll);
   };
 
+  const handlePollTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const newPoll = { ...poll, title: e.currentTarget.value };
+    setPoll(newPoll);
+  };
+
   return (
     <div>
       <input
         placeholder="Meeting ID"
         value={poll.meetingId}
         onChange={handleMeetingIdChange}
+      />
+      <input
+        placeholder="Poll Title"
+        value={poll.title}
+        onChange={handlePollTitleChange}
       />
       {poll.questions.map((question) => (
         <Question
