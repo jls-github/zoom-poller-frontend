@@ -5,11 +5,11 @@ import IQuestion from "../interfaces/Question";
 export default function Question({
   question,
   handleQuestionChange,
-  handleAnswerChange
+  handleAnswerChange,
 }: {
   question: IQuestion;
   handleQuestionChange: Function;
-  handleAnswerChange: Function
+  handleAnswerChange: Function;
 }) {
   return (
     <div>
@@ -19,7 +19,11 @@ export default function Question({
         onChange={(e) => handleQuestionChange(e, question.key)}
       />
       {question.answers.map((answer) => (
-        <Answer answer={answer} key={answer.key} handleAnswerChange={handleAnswerChange} />
+        <Answer
+          answer={answer}
+          key={answer.key}
+          handleAnswerChange={handleAnswerChange}
+        />
       ))}
     </div>
   );

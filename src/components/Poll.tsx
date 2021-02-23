@@ -60,7 +60,12 @@ const Poll = () => {
     <div>
       <input placeholder="Meeting ID" />
       {questions.map((question) => (
-        <Question question={question} key={question.key} handleQuestionChange={handleQuestionChange} handleAnswerChange={handleAnswerChange} />
+        <Question
+          question={question}
+          key={question.key}
+          handleQuestionChange={handleQuestionChange}
+          handleAnswerChange={handleAnswerChange}
+        />
       ))}
     </div>
   );
