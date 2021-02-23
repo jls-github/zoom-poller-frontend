@@ -1,3 +1,5 @@
 export default interface IAnswer {
-    text: string
+    text: string;
+    key: string;
+    handleAnswerChange: Function;
 }
