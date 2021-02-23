@@ -53,7 +53,6 @@ const Poll = () => {
     const newPoll = {
       ...poll,
       questions: poll.questions.map((question) => {
-        console.log(question);
         if (question.key === questionKey) {
           return { ...question, text: e.currentTarget.value };
         }
