@@ -1,7 +1,7 @@
-import IAnswer from './Answer'
+import IAnswer from "./Answer";
 
 export default interface IQuestion {
-    text: string;
-    key: string;
-    answers: IAnswer[]
+  text: string;
+  key: string;
+  answers: IAnswer[];
 }
