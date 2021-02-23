@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Question from "./Question";
+import IQuestion from "../interfaces/Question";
 
-type Props = {
-  questions: [
+export default function Poll() {
+  const [questions, setQuestions] = useState([
     {
-      text: string;
-      answers: {
-        text: string;
-      };
-    }
-  ];
-};
+      text: "",
+      answers: [
+        {
+          text: "",
+        },
+        {
+          text: "",
+        },
+      ],
+    },
+  ]);
 
-export default function Poll(props: Props) {
-  return <input placeholder="Meeting ID" />;
+  return (
+    <div>
+      <input placeholder="Meeting ID" />
+      {questions.map((question) => {
+        return Question(question);
+      })}
+    </div>
+  );
 }

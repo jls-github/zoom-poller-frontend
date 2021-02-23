@@ -1,15 +1,12 @@
 import React from "react";
 import Answer from "./Answer";
+import IQuestion from "../interfaces/Question";
 
-type Props = {
-  text: string;
-  answers: [
-    {
-      text: string;
-    }
-  ];
-};
-
-export default function Question(props: Props) {
-  return <input placeholder="Question" />;
+export default function Question(question: IQuestion) {
+  return (
+    <div>
+      <input placeholder="Question" value={question.text} />
+      {question.answers.map((answer) => Answer(answer))}
+    </div>
+  );
 }
