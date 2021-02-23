@@ -70,7 +70,11 @@ const Poll = () => {
 
   return (
     <div>
-      <input placeholder="Meeting ID" value={poll.meetingId} onChange={handleMeetingIdChange}/>
+      <input
+        placeholder="Meeting ID"
+        value={poll.meetingId}
+        onChange={handleMeetingIdChange}
+      />
       {poll.questions.map((question) => (
         <Question
           question={question}
