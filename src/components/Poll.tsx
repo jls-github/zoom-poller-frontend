@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import Question from "./Question";
 import IQuestion from "../interfaces/Question";
-import { setConstantValue } from "typescript";
 
-export default function Poll() {
+const Poll = () => {
   const [questions, setQuestions] = useState<IQuestion[]>([
     {
       text: "",
       key: "question-1",
-      handleQuestionChange: handleQuestionChange,
       answers: [
         {
-          handleAnswerChange: handleAnswerChange,
           key: "answer-1",
           text: "",
         },
         {
-          handleAnswerChange: handleAnswerChange,
           key: "answer-2",
           text: "",
         },
@@ -26,43 +22,48 @@ export default function Poll() {
 
   const [key, setKey] = useState(3);
 
-  function handleAnswerChange(
+  const handleAnswerChange = (
     e: React.FormEvent<HTMLInputElement>,
-    key: string
-  ) {
+    answerKey: string
+  ) => {
+    console.log(questions);
     const newQuestions = questions.map((question) => {
       return {
         ...question,
         answers: question.answers.map((answer) => {
-          if (answer.key === key) {
+          if (answer.key === answerKey) {
             return { ...answer, text: e.currentTarget.value };
           }
           return answer;
         }),
       };
     });
+    console.log(newQuestions);
     setQuestions(newQuestions);
-  }
+  };
 
-  function handleQuestionChange(
+  const handleQuestionChange = (
     e: React.FormEvent<HTMLInputElement>,
-    key: string
-  ) {
+    questionKey: string
+  ) => {
     const newQuestions = questions.map((question) => {
-      if (question.key === key) {
+      console.log(question);
+      if (question.key === questionKey) {
         return { ...question, text: e.currentTarget.value };
       }
       return question;
     });
     setQuestions(newQuestions);
-  }
+  };
 
   return (
     <div>
       <input placeholder="Meeting ID" />
       {questions.map((question) => (
-        <Question question={question} />
+        <Question question={question} key={question.key} handleQuestionChange={handleQuestionChange} handleAnswerChange={handleAnswerChange} />
       ))}
     </div>
   );
-}
+};
+
+export default Poll;
