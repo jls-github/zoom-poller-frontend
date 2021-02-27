@@ -1,28 +1,14 @@
 import React, { useState } from "react";
-import Question from "./Question";
 import IPoll from "../interfaces/Poll";
+import {
+  generateAnswer,
+  generateQuestion,
+  generatePoll,
+} from "../services/Generators";
+import Question from "./Question";
 
 const Poll = () => {
-  const [poll, setPoll] = useState<IPoll>({
-    meetingId: "",
-    title: "",
-    questions: [
-      {
-        text: "",
-        key: "question-1",
-        answers: [
-          {
-            key: "answer-1",
-            text: "",
-          },
-          {
-            key: "answer-2",
-            text: "",
-          },
-        ],
-      },
-    ],
-  });
+  const [poll, setPoll] = useState<IPoll>(generatePoll());
 
   const [key, setKey] = useState(3);
 
@@ -73,8 +59,37 @@ const Poll = () => {
     setPoll(newPoll);
   };
 
+  const addAnswer = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    questionKey: string
+  ) => {
+    e.preventDefault();
+    const newPoll = {
+      ...poll,
+      questions: poll.questions.map((question) => {
+        if (question.key === questionKey) {
+          return {
+            ...question,
+            answers: [...question.answers, generateAnswer()],
+          };
+        }
+        return question;
+      }),
+    };
+    setPoll(newPoll);
+  };
+
+  const addQuestion = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    const newPoll = {
+      ...poll,
+      questions: [...poll.questions, generateQuestion()],
+    };
+    setPoll(newPoll);
+  };
+
   return (
-    <div>
+    <form>
       <input
         placeholder="Meeting ID"
         value={poll.meetingId}
@@ -91,9 +106,11 @@ const Poll = () => {
           key={question.key}
           handleQuestionChange={handleQuestionChange}
           handleAnswerChange={handleAnswerChange}
+          addAnswer={addAnswer}
         />
       ))}
-    </div>
+      <button onClick={(e) => addQuestion(e)}>Add Question</button>
+    </form>
   );
 };
 

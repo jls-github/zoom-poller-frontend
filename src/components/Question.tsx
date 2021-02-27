@@ -6,10 +6,12 @@ export default function Question({
   question,
   handleQuestionChange,
   handleAnswerChange,
+  addAnswer,
 }: {
   question: IQuestion;
   handleQuestionChange: Function;
   handleAnswerChange: Function;
+  addAnswer: Function;
 }) {
   return (
     <div>
@@ -25,6 +27,7 @@ export default function Question({
           handleAnswerChange={handleAnswerChange}
         />
       ))}
+      <button onClick={(e) => addAnswer(e, question.key)}>Add Answer</button>
     </div>
   );
 }
