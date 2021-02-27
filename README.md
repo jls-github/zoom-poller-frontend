@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# ZOOM POLLER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This application allows anyone with a Zoom Pro Account to asynchronously create polls for scheduled zoom meetings using the Zoom API. This funcitonality will be useful for those within educational contexts to get a better understanding of what needs to be taught on a certain day, or to get a better understanding of what concepts the students understood from a lesson (exit tickets). Those conducting UX research will also find this application useful, easily polling all participants of a Zoom interview.
 
-In the project directory, you can run:
+The application is still in development. Below is a rough sketch of the roadmap going forward
 
-### `npm start`
+The backend of this application can be found at https://github.com/jls-github/zoom-polling-app.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ROADMAP
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### To MVP
 
-### `npm test`
+- Move OAuth to frontend
+- Post poll to zoom API with backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### To 1.0
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Add simple styling with Bootstrap 5
+- Add functionality to delete questions and answers
+- Add schema validation on frontend with Yup
