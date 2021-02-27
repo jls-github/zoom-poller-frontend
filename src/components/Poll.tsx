@@ -10,8 +10,6 @@ import Question from "./Question";
 const Poll = () => {
   const [poll, setPoll] = useState<IPoll>(generatePoll());
 
-  const [key, setKey] = useState(3);
-
   const handleAnswerChange = (
     e: React.FormEvent<HTMLInputElement>,
     answerKey: string
@@ -88,6 +86,39 @@ const Poll = () => {
     setPoll(newPoll);
   };
 
+  const deleteAnswer = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    answerKey: string
+  ) => {
+    e.preventDefault();
+    const newPoll = {
+      ...poll,
+      questions: poll.questions.map((question) => {
+        return {
+          ...question,
+          answers: question.answers.filter(
+            (answer) => answer.key !== answerKey
+          ),
+        };
+      }),
+    };
+    setPoll(newPoll);
+  };
+
+  const deleteQuestion = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    questionKey: string
+  ) => {
+    e.preventDefault();
+    const newPoll = {
+      ...poll,
+      questions: poll.questions.filter(
+        (question) => question.key !== questionKey
+      ),
+    };
+    setPoll(newPoll);
+  };
+
   return (
     <form>
       <input
@@ -107,6 +138,8 @@ const Poll = () => {
           handleQuestionChange={handleQuestionChange}
           handleAnswerChange={handleAnswerChange}
           addAnswer={addAnswer}
+          deleteAnswer={deleteAnswer}
+          deleteQuestion={deleteQuestion}
         />
       ))}
       <button onClick={(e) => addQuestion(e)}>Add Question</button>

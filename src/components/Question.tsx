@@ -7,14 +7,18 @@ export default function Question({
   handleQuestionChange,
   handleAnswerChange,
   addAnswer,
+  deleteAnswer,
+  deleteQuestion,
 }: {
   question: IQuestion;
   handleQuestionChange: Function;
   handleAnswerChange: Function;
   addAnswer: Function;
+  deleteAnswer: Function;
+  deleteQuestion: Function;
 }) {
   return (
-    <div>
+    <>
       <input
         placeholder="Question"
         value={question.text}
@@ -25,9 +29,13 @@ export default function Question({
           answer={answer}
           key={answer.key}
           handleAnswerChange={handleAnswerChange}
+          deleteAnswer={deleteAnswer}
         />
       ))}
       <button onClick={(e) => addAnswer(e, question.key)}>Add Answer</button>
-    </div>
+      <button onClick={(e) => deleteQuestion(e, question.key)}>
+        Delete Question
+      </button>
+    </>
   );
 }
